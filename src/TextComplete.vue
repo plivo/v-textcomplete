@@ -74,7 +74,7 @@ export default {
       default: true
     },
     rows: {
-      type: Number,
+      type: String,
       default: 2
     },
   },

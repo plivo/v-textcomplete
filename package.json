@@ -1,30 +1,63 @@
 {
-  "name": "v-textcomplete",
-  "version": "0.2.5",
-  "description": "A simple, flexible and easy-to-use text completion component.",
-  "author": "jcc <changejian@gmail.com>",
-  "license": "MIT",
-  "main": "dist/v-textcomplete.js",
-  "repository": "jcc/v-textcomplete",
-  "keywords": [
-    "textcomplete",
-    "text-complete",
-    "vuejs",
-    "vue",
-    "vue.js"
+  "_args": [
+    [
+      {
+        "raw": "v-textcomplete",
+        "scope": null,
+        "escapedName": "v-textcomplete",
+        "name": "v-textcomplete",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/ketan/projects/phlo-ui"
+    ]
   ],
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --config=./build/webpack.dev.config.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=./build/webpack.prod.config.js"
+  "_from": "v-textcomplete@latest",
+  "_id": "v-textcomplete@0.2.5",
+  "_inCache": true,
+  "_location": "/v-textcomplete",
+  "_nodeVersion": "8.2.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/v-textcomplete-0.2.5.tgz_1504792176565_0.862734621623531"
   },
-  "files": [
-    "src",
-    "dist/*.js"
+  "_npmUser": {
+    "name": "jcc",
+    "email": "changejian@gmail.com"
+  },
+  "_npmVersion": "5.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "v-textcomplete",
+    "scope": null,
+    "escapedName": "v-textcomplete",
+    "name": "v-textcomplete",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
+  "_resolved": "https://registry.npmjs.org/v-textcomplete/-/v-textcomplete-0.2.5.tgz",
+  "_shasum": "bec221ca911437426f487daf7a755dd2a0f88ab2",
+  "_shrinkwrap": null,
+  "_spec": "v-textcomplete",
+  "_where": "/Users/ketan/projects/phlo-ui",
+  "author": {
+    "name": "jcc",
+    "email": "changejian@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/jcc/v-textcomplete/issues"
+  },
   "dependencies": {
     "textarea-caret": "^3.0.2",
     "vue": "^2.2.2"
   },
+  "description": "A simple, flexible and easy-to-use text completion component.",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.14.0",
@@ -36,19 +69,58 @@
     "babel-runtime": "^6.11.6",
     "cross-env": "^3.1.4",
     "css-loader": "^0.23.0",
+    "emojione": "^2.2.0",
     "eslint": "^3.12.2",
     "eslint-loader": "^1.6.1",
+    "file-loader": "^0.10.1",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.3",
-    "file-loader": "^0.10.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "vue-loader": "^10.3.0",
     "vue-style-loader": "^2.0.0",
     "vue-template-compiler": "^2.1.10",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0",
-    "emojione": "^2.2.0"
-  }
+    "webpack-dev-server": "^2.3.0"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-5SL30ZEZ5sMjbtvXmirEAgGYIdKZfRrn9/FdcO0RQtuLt0Qvgo5uGfeKTMGWGYkDEVzWOKoA3hTwRVqpxcl2RQ==",
+    "shasum": "bec221ca911437426f487daf7a755dd2a0f88ab2",
+    "tarball": "https://registry.npmjs.org/v-textcomplete/-/v-textcomplete-0.2.5.tgz"
+  },
+  "files": [
+    "src",
+    "dist/*.js"
+  ],
+  "gitHead": "b1378204770c0c35733ac06b8bd3c3ca7539e1de",
+  "homepage": "https://github.com/jcc/v-textcomplete#readme",
+  "keywords": [
+    "textcomplete",
+    "text-complete",
+    "vuejs",
+    "vue",
+    "vue.js"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "maintainers": [
+    {
+      "name": "jcc",
+      "email": "changejian@gmail.com"
+    }
+  ],
+  "name": "v-textcomplete",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcc/v-textcomplete.git"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=./build/webpack.prod.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --config=./build/webpack.dev.config.js"
+  },
+  "version": "0.2.5"
 }

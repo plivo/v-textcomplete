@@ -22,6 +22,7 @@ export default {
             this.emitMoveEvent(UP)
             break
           case DOWN:
+            console.log('down')
             e.preventDefault()
             this.emitMoveEvent(DOWN)
             break
@@ -56,8 +57,8 @@ export default {
             : keyEvent.keyCode === 13 ? ENTER // enter
             : keyEvent.keyCode === 38 ? UP // up
             : keyEvent.keyCode === 40 ? DOWN // down
-            : keyEvent.keyCode === 83 && keyEvent.shiftKey ? DOWN // shift-w
-            : keyEvent.keyCode === 87 && keyEvent.shiftKey ? UP // shift-s
+            // : keyEvent.keyCode === 83 && keyEvent.shiftKey ? DOWN // shift-w
+            // : keyEvent.keyCode === 87 && keyEvent.shiftKey ? UP // shift-s
             : OTHER
     },
   }

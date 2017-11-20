@@ -1,4 +1,3 @@
-
 <p align="center">
 <img src="https://pigjian.com/images/v-textcomplete.png" alt="Powered By Jiajian Chan" width="160">
 </p>

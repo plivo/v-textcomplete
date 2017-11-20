@@ -1,17 +1,33 @@
 <template>
   <div :class="['complete-box', boxClass]">
-    <textarea :id="'v-textcomplete-' + id"
+    <textarea v-if="type !== 'text'" :id="'v-textcomplete-' + id"
               ref="textarea"
               :value="value"
-              @input="updateValue($event.target.value)"
+              @input="updateValue($event.target.value); $emit('input', $event.target.value)"
+              @change="$emit('input', $event.target.value)"
               :style="textareaStyle"
               :class="['v-textcomplete__inner', areaClass]"
               :placeholder="placeholder"
               :rows="rows"
-              name="textcomplete"
+              :name="name"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp"></textarea>
+
+    <input v-if="type === 'text'" :id="'v-textcomplete-' + id"
+              ref="textarea"
+              :value="value"
+              autocomplete="off"
+              @input="updateValue($event.target.value); $emit('input', $event.target.value)"
+              @change="$emit('input', $event.target.value)"
+              :style="textareaStyle"
+              :class="['v-textcomplete__inner', areaClass]"
+              :placeholder="placeholder"
+              :rows="rows"
+              :name="name"
+              @focus="handleFocus"
+              @keydown="keyEvent"
+              @keyup="keyUp" />
 
     <div class="autocomplete transition" :id="'autocomplete-' + id" v-show="showList">
       <ul>
@@ -37,6 +53,8 @@ export default {
     boxClass: String,
     areaClass: String,
     placeholder: String,
+    name: String,
+    type: String,
     autosize: {
       type: [Boolean, Object],
       default: false
@@ -63,7 +81,6 @@ export default {
   data() {
     return {
       id: Math.random().toString(36).substr(5),
-      content: this.value,
       showList: false,
       cursor: 0,
       list: [],
@@ -115,17 +132,23 @@ export default {
         let autocomplete = document.getElementById('autocomplete-' + that.id)
         let textarea = document.getElementById('v-textcomplete-' + that.id)
         let content = textarea.value.substring(0, textarea.selectionEnd)
+        let left = 0
         let match = ''
 
         match = content.match(item.match)
 
         if (match != null) {
           let i = match[2].replace(/(^\s*)|(\s*$)/g, '')
-          let cursorPosition = that.getCursorPosition(textarea)
+          let len = content.split('{{')
+          if (len.length) {
+            len = len[len.length - 1]
+          }
+          let cursorPosition = that.getCursorPosition(textarea) - (len.length)
           let scroll = that.getElementScroll(textarea)
           let coordinates = getCaretCoordinates(textarea, cursorPosition)
           let top = coordinates.top + that.lineHeight - scroll.top
-          let left = coordinates.left + textarea.offsetLeft
+          left = coordinates.left + textarea.offsetLeft
+          console.log(coordinates, that.lineHeight, scroll.top )
           let clientHeight = document.documentElement.offsetHeight
 
           that.template = item.template
@@ -149,8 +172,9 @@ export default {
             }
           }
 
-          if ((clientHeight - textarea.getBoundingClientRect().top) < (that.lineHeight * this.list.length)) {
+          if ((clientHeight - textarea.getBoundingClientRect().top) < (parseInt(window.getComputedStyle(autocomplete).height))) {
             autocomplete.style.top = - (that.lineHeight * this.list.length) - ( 2 * top ) + 'px'
+            // autocomplete.style.top = top + 'px'
           } else {
             autocomplete.style.top = top + 'px'
           }
@@ -301,28 +325,31 @@ textarea {
   position: absolute;
   z-index: 1000;
 }
-.autocomplete ul {
-  list-style: none;
-  padding-left: 0;
-  border: 1px #f3f5f7 solid;
-  border-radius: 3px;
+ .autocomplete  ul {
+  border: 1px solid #D0D5DB;
+  background: #fff;
+  box-shadow: 0 2px 12px #D0D5DB;
+  width: 200px;
+  padding: 4px 0;
   margin: 0;
+  max-height: 127px;
+  overflow-y: scroll;
+
+  font-family: 'Source Sans Pro', sans-serif;
 
   li {
-    padding-left: 5px;
-    padding-right: 5px;
-    border-bottom: 1px solid #f3f5f7;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: 3B3C3A;
+    line-height: 28px;
     cursor: pointer;
+    white-space: nowrap;
 
-    &:hover {
-      background-color: #f3f5f7;
+    &:hover, &.active {
+      background: #B1E1FF;
     }
-    span small {
-      padding-left: 10px;
-    }
-  }
-  .active {
-    background-color: #f3f5f7;
+
   }
 }
 </style>

@@ -104,7 +104,7 @@
     "vue.js"
   ],
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "dist/v-textcomplete.js",
   "maintainers": [
     {
       "name": "jcc",

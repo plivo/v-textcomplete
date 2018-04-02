@@ -10,6 +10,7 @@
               :placeholder="placeholder"
               :rows="rows"
               :name="name"
+              @blur="$emit('blur')"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp"></textarea>
@@ -25,6 +26,7 @@
               :placeholder="placeholder"
               :rows="rows"
               :name="name"
+              @blur="$emit('blur')"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp" />

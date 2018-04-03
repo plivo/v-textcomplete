@@ -10,6 +10,7 @@
               :placeholder="placeholder"
               :rows="rows"
               :name="name"
+              :disabled="disabled"
               @blur="$emit('blur')"
               @focus="handleFocus"
               @keydown="keyEvent"
@@ -26,6 +27,7 @@
               :placeholder="placeholder"
               :rows="rows"
               :name="name"
+              :disabled="disabled"
               @blur="$emit('blur')"
               @focus="handleFocus"
               @keydown="keyEvent"
@@ -57,6 +59,7 @@ export default {
     placeholder: String,
     name: String,
     type: String,
+    disabled: Boolean,
     autosize: {
       type: [Boolean, Object],
       default: false

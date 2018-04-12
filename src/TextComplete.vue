@@ -11,7 +11,7 @@
               :rows="rows"
               :name="name"
               :disabled="disabled"
-              @blur="$emit('blur')"
+              @blur="handleBlur"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp"></textarea>
@@ -28,7 +28,7 @@
               :rows="rows"
               :name="name"
               :disabled="disabled"
-              @blur="$emit('blur')"
+              @blur="handleBlur"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp" />
@@ -281,6 +281,10 @@ export default {
         range.select()
       }
     },
+    handleBlur() {
+      this.showList = false
+      this.$emit('blur')
+    }
   }
 }
 </script>

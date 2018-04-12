@@ -81,6 +81,9 @@ export default {
     rows: {
       default: 2
     },
+    startFromLeft: {
+      default: true
+    },
   },
   data() {
     return {
@@ -150,7 +153,7 @@ export default {
           let cursorPosition = that.getCursorPosition(textarea) - (len.length)
           let scroll = that.getElementScroll(textarea)
           let coordinates = getCaretCoordinates(textarea, cursorPosition)
-          let top = coordinates.top + that.lineHeight - scroll.top
+          let top = coordinates.top + that.lineHeight - scroll.top + 5
           left = coordinates.left + textarea.offsetLeft
           console.log(coordinates, that.lineHeight, scroll.top )
           let clientHeight = document.documentElement.offsetHeight
@@ -182,8 +185,9 @@ export default {
           } else {
             autocomplete.style.top = top + 'px'
           }
-
-          autocomplete.style.left = left + 'px'
+          if (!this.startFromLeft) {
+            autocomplete.style.left = left + 'px'
+          }
 
           that.matched.push(match)
         } else {

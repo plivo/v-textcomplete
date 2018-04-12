@@ -11,7 +11,7 @@
               :rows="rows"
               :name="name"
               :disabled="disabled"
-              @blur="$emit('blur')"
+              @blur="handleBlur"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp"></textarea>
@@ -28,7 +28,7 @@
               :rows="rows"
               :name="name"
               :disabled="disabled"
-              @blur="$emit('blur')"
+              @blur="handleBlur"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp" />
@@ -80,6 +80,9 @@ export default {
     },
     rows: {
       default: 2
+    },
+    startFromLeft: {
+      default: true
     },
   },
   data() {
@@ -150,7 +153,7 @@ export default {
           let cursorPosition = that.getCursorPosition(textarea) - (len.length)
           let scroll = that.getElementScroll(textarea)
           let coordinates = getCaretCoordinates(textarea, cursorPosition)
-          let top = coordinates.top + that.lineHeight - scroll.top
+          let top = coordinates.top + that.lineHeight - scroll.top + 5
           left = coordinates.left + textarea.offsetLeft
           console.log(coordinates, that.lineHeight, scroll.top )
           let clientHeight = document.documentElement.offsetHeight
@@ -182,8 +185,9 @@ export default {
           } else {
             autocomplete.style.top = top + 'px'
           }
-
-          autocomplete.style.left = left + 'px'
+          if (!this.startFromLeft) {
+            autocomplete.style.left = left + 'px'
+          }
 
           that.matched.push(match)
         } else {
@@ -277,6 +281,10 @@ export default {
         range.select()
       }
     },
+    handleBlur() {
+      this.showList = false
+      this.$emit('blur')
+    }
   }
 }
 </script>

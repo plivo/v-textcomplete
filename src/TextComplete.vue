@@ -282,8 +282,11 @@ export default {
       }
     },
     handleBlur() {
-      this.showList = false
-      this.$emit('blur')
+      let self = this
+      self.$emit('blur')
+      setTimeout(function(){
+        self.showList = false
+      }, 100)
     }
   }
 }

@@ -342,25 +342,17 @@ textarea {
 }
  .autocomplete  ul {
   border: 1px solid #D0D5DB;
-  background: #fff;
   box-shadow: 0 2px 12px #D0D5DB;
-  width: 200px;
-  padding: 4px 0;
   margin: 0;
-  max-height: 127px;
   overflow-y: scroll;
-
   font-family: 'Source Sans Pro', sans-serif;
 
   li {
-    padding: 0 10px;
     font-size: 14px;
     font-weight: 700;
     color: 3B3C3A;
     line-height: 28px;
     cursor: pointer;
-    white-space: nowrap;
-
     &:hover, &.active {
       background: #B1E1FF;
     }

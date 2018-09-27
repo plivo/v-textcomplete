@@ -11,7 +11,7 @@
               :rows="rows"
               :name="name"
               :disabled="disabled"
-              @blur="handleBlur"
+              @blur.prevent="handleBlur"
               @focus="handleFocus"
               @keydown="keyEvent"
               @keyup="keyUp"></textarea>
@@ -38,6 +38,8 @@
         <li v-for="(value, index) in list"
             :class="(actived.value == value) ? 'active' : ''"
             @click="selectList(value)"
+            @mouseover = "mouseover(true)"
+            @mouseleave = "mouseover(false)"
             v-html="template(value)"></li>
       </ul>
     </div>
@@ -97,6 +99,7 @@ export default {
       template: () => {},
       replace: () => {},
       textareaCalcStyle: {},
+      mouseOverDropdown: false,
     }
   },
   mounted() {
@@ -284,9 +287,12 @@ export default {
     handleBlur() {
       let self = this
       self.$emit('blur')
-      setTimeout(function(){
+      if (!self.mouseOverDropdown) {
         self.showList = false
-      }, 100)
+      }
+    },
+    mouseover(flag) {
+      this.mouseOverDropdown = flag
     }
   }
 }
